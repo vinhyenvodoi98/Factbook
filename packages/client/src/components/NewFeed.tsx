@@ -66,7 +66,7 @@ const Feed = ({type, cid, contractAddress, roundId}:any) => {
   }, [cid]);
 
   return(
-    <div className="text-base-content bg-base-200 rounded-lg p-4 hover:bg-base-300 cursor-pointer">
+    <div className="text-base-content bg-base-200 rounded-lg p-4 hover:bg-base-300 cursor-pointer border border-primary">
       {feed ?
         <div className="grid grid-cols-12 gap-2">
           <div className="avatar">
