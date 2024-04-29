@@ -22,6 +22,7 @@ export default function NewFeed({count}:{count:number}) {
   // eslint-disable-next-line
   // @ts-ignore
   const { data, fetchNextPage } = useContractInfiniteReads({
+    cacheKey: 'newfeed',
     ...paginatedIndexesConfig(
       // eslint-disable-next-line
       // @ts-ignore
@@ -36,6 +37,7 @@ export default function NewFeed({count}:{count:number}) {
       },
       { start: count-1, perPage: 10, direction: 'decrement' },
     ),
+    cacheTime: 10_000,
   })
   return (
     <div className="flex flex-col gap-4">
