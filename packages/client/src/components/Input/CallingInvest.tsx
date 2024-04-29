@@ -34,23 +34,10 @@ const Erc20Abi = [
 },
 ]
 
-export default function InputCallingInvest({setPostData}:any) {
+export default function InputCallingInvest({setPostData, setRoundId}:any) {
   const [textArea, setTextArea] = useState("")
   const [erc20contract, setErc20Contract] = useState("")
   const {address} = useAccount()
-  const [roundId, setRoundId] = useState()
-
-  useEffect(() => {
-    setPostData({
-      content: textArea,
-      owner: address,
-      erc20contract: {
-        address: erc20contract,
-        name: token ? token[0].result : "",
-        symbol :token ? token[1].result : ""
-      },
-    })
-  }, [textArea])
 
   // Read token
   const { data: token } = useContractReads({
@@ -68,7 +55,17 @@ export default function InputCallingInvest({setPostData}:any) {
     ],
   });
 
-  console.log({roundId})
+  useEffect(() => {
+    setPostData({
+      content: textArea,
+      owner: address,
+      erc20contract: {
+        address: erc20contract,
+        name: token ? token[0].result : "",
+        symbol :token ? token[1].result : ""
+      },
+    })
+  }, [textArea, token])
 
   return (
     <div className="text-base-content">

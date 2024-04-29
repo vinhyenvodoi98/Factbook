@@ -25,6 +25,4 @@ await window.ethereum.request({
 ## Contract Addresses
 | Network | Address | Link |
 |---|---|---|
-| Arbitrum Sepolia | 0x725C1e429622F4CD4B93CbeF6dC6eCD4e30eF416 |
-| opAvail Sepolia | 0x009F27f08f00429D45E11eD25CAf534883BF6Cb8 |
-| Morph Testnet |  |
+| Sepolia Sepolia | 0xbbb0f51Df70311439E78a26779126D67cC53C11d | https://sepolia.scrollscan.dev/address/0xbbb0f51df70311439e78a26779126d67cc53c11d |

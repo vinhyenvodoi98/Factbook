@@ -15,6 +15,7 @@ export default function Zip() {
   const [zipType, setZipType] = useState(0)
   const [postData, setPostData] = useState<any>([])
   const [status, setStatus] = useState(0)
+  const [roundId, setRoundId] = useState("0")
 
   const {
     data: transactionHash,
@@ -38,6 +39,7 @@ export default function Zip() {
         zipType,
         content,
         (endTime.getTime()-(endTime.getTime()%1000))/1000,
+        roundId
       ],
     });
   }
@@ -109,7 +111,7 @@ export default function Zip() {
               <InputVoting setPostData={setPostData}/>
             : zipType ===1 ?
               <InputFunding setPostData={setPostData}/>
-            :<InputCallingInvest setPostData={setPostData}/>
+            :<InputCallingInvest setRoundId={setRoundId} setPostData={setPostData}/>
           }
           <div className='mt-8 flex flex-row-reverse'>
             <button disabled={!Object.keys(postData).length} onClick={() => post(postData)} className="btn btn-outline btn-accent w-24">Zip !!!</button>

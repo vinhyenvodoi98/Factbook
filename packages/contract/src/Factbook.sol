@@ -11,13 +11,14 @@ contract Factbook {
         string content;
         address feedContract;
         uint256 createdTime;
+        uint80 roundId;
     }
 
     uint256 public count;
     mapping(uint256 => Feed) public feeds;
     address[] public modules;
 
-    function addNewFeed(uint8 _type, string memory _content, uint256 _endtime) public {
+    function addNewFeed(uint8 _type, string memory _content, uint256 _endtime, uint80 _roundId) public {
         address _feedContract;
         if (_type == uint8(0)) {
             _feedContract = address(new Voting(msg.sender, _endtime));
@@ -34,6 +35,7 @@ contract Factbook {
         newFead.content = _content;
         newFead.feedContract = _feedContract;
         newFead.createdTime = block.timestamp;
+        newFead.roundId = _roundId;
         feeds[count] = newFead;
         count ++;
     }

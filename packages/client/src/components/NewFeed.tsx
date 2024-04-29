@@ -37,19 +37,18 @@ export default function NewFeed({count}:{count:number}) {
       { start: count-1, perPage: 10, direction: 'decrement' },
     ),
   })
-
   return (
     <div className="flex flex-col gap-4">
       {data && data.pages[0].map((feed:any) =>(
         <div key={feed.result[1]}>
-          <Feed type={feed.result[0]} cid={feed.result[1]} contractAddress={feed.result[2]}/>
+          <Feed type={feed.result[0]} cid={feed.result[1]} contractAddress={feed.result[2]} roundId={feed.result[4]}/>
         </div>
       ))}
     </div>
   )
 }
 
-const Feed = ({type, cid, contractAddress}:any) => {
+const Feed = ({type, cid, contractAddress, roundId}:any) => {
   const [feed, setFeed] = useState<any>(null)
 
   useEffect(() => {
@@ -81,7 +80,7 @@ const Feed = ({type, cid, contractAddress}:any) => {
             </div>
             {type === 0 ? <OutputVoting content={feed.content} options={feed.voteOptions} contractAddress={contractAddress} /> :
             type === 1 ? <OutputFunding content={feed.content} options={feed.mediaList} contractAddress={contractAddress} /> :
-            <OutputCallingInvest content={feed.content} owner={feed.owner} erc20contract={feed.erc20contract} /> }
+            <OutputCallingInvest content={feed.content} owner={feed.owner} erc20contract={feed.erc20contract} roundId={roundId}/> }
           </div>
         </div>
         :

@@ -7,10 +7,10 @@ import FactbookAbi from '../../../../contract/out/Factbook.sol/Factbook.json'
 import FactbookAddress from '../../../../contract/contractInfo.json'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import GetPriceByRoundId from '../GetPriceByRoundId';
+import DataFeed from '../DataFeed';
 
-export default function OutputCallingInvest({content, owner, erc20contract}:any) {
-  const chainId = useChainId()
-
+export default function OutputCallingInvest({content, owner, erc20contract, roundId}:any) {
   // eslint-disable-next-line
   // @ts-ignore
   const { data: modules} = useContractRead({
@@ -22,7 +22,7 @@ export default function OutputCallingInvest({content, owner, erc20contract}:any)
   })
 
   return (
-    <div>
+    <div className='flex flex-col gap-4'>
       <p>{content}</p>
       <label className="form-control w-full">
         <div className="label">
@@ -34,6 +34,18 @@ export default function OutputCallingInvest({content, owner, erc20contract}:any)
           <span className="label-text-alt">Symbol: {erc20contract.symbol}</span>
         </div>
       </label>
+      {erc20contract && erc20contract.address.toString().length > 0 && roundId.toString().length > 0 &&
+      <div className='grid grid-cols-5 gap-2'>
+        <p className='col-span-1'>Price when calling:</p>
+        <div className='col-span-4'>
+          <GetPriceByRoundId tokenAddress={erc20contract.address} roundId={roundId.toString()}/>
+        </div>
+        <p className='col-span-1'>Price now:</p>
+        <div className='col-span-4'>
+          <DataFeed tokenAddress={erc20contract.address}/>
+        </div>
+      </div>
+      }
       <div>
         <div className="divider"></div>
         <p>Module check</p>
