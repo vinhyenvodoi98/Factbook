@@ -1,0 +1,13 @@
+{
+  "name": "contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy-scroll-sepolia": "source .env && forge create --rpc-url https://rpc.ankr.com/scroll_sepolia_testnet --private-key $PRIVATE_KEY src/Factbook.sol:Factbook --legacy  --json > contractInfo.json",
+    "verify-contract": "source .env && forge verify-contract --num-of-optimizations 200 --watch --verifier etherscan --verifier-url https://api-sepolia.scrollscan.dev/api --etherscan-api-key $SCROLL_SEPOLIA_ETHERSCAN --compiler-version v0.8.20+commit.a1b79de6 0x5c04874D1A2e44Df2A557604D78a402aa38772D8 src/Factbook.sol:Factbook"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
