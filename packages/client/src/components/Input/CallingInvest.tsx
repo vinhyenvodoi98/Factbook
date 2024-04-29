@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useAccount, useContractReads } from "wagmi"
-import DataFeed from "../DataFeed"
 import RoundId from "../RoundId"
 
 const Erc20Abi = [

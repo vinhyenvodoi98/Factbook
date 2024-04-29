@@ -9,7 +9,7 @@ export default function Header() {
       <div className=' w-full'>
         <div className="navbar bg-base-200 px-6 border-b-2 border-base-300">
           <div className="navbar-start">
-            <Link href="/" className="btn btn-ghost text-xl text-primary">Z</Link>
+            <Link href="/" className="btn btn-ghost text-xl text-primary">Fact</Link>
           </div>
           <div className="navbar-end">
             <button className="btn btn-ghost btn-circle mx-2">
